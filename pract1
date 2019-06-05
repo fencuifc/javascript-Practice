@@ -1,0 +1,12 @@
+var customObject = {
+  customFunction1: function(param1){console.log(param1)},
+  customFunction2: function(param2){console.log(param2)},
+};
+var param = {
+    customFunction1:'param1',
+    customFunction2:'param2'
+}
+var order = ['customFunction2', 'customFunction1'];
+order.forEach(function(item){
+    customObject[item](param[item]);
+})
