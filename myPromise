@@ -1,0 +1,30 @@
+	
+  //create a promise
+  
+  function MyPromise (fn) {
+	  var _this = this;
+	  
+
+	  this.callback = undefined;
+	  
+	  function resolve (val) {
+	    _this.callback && _this.callback(val);
+	  }
+	  
+	  fn(resolve);
+	};
+
+	MyPromise.prototype.then = function (cb) {
+	  this.callback = cb;
+	};
+
+	var p = new MyPromise(function (resolve) {
+	  console.log(1);
+	  setTimeout(function () {
+	    resolve(2);
+	  }, 1000);
+	});
+
+	p.then(function (val) {
+	  console.log(val);
+	});
