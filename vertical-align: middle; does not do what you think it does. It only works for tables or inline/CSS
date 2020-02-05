@@ -1,0 +1,14 @@
+vertical-align: middle; does not do what you think it does. It only works for tables or inline / inline-block content.
+
+flex:
+flex-grow flex-shrink flex-basis
+flex-basis like width
+flex-grow and flex-shrink only work with flex-basis
+flex-grow will grow when there are more space
+flex-shrink bigger flex-basis element faster then others. 
+
+z-index:
+work on positioned block
+
+Center in CSS: 
+https://css-tricks.com/centering-css-complete-guide/ 
