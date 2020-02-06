@@ -1,0 +1,26 @@
+
+var myPromise1 = Promise.resolve('hello');
+var myPromise2 = Promise.resolve('world');
+Promise.race([myPromise1, myPromise2]).then(result => {
+  console.log(result);
+});
+
+
+What is the value of this in an arrow function?
+
+
+Which statement will load all of the exported members of a module located at "./Foo"?
+
+import * as say from './say.js';
+
+
+
+Given the following code, how would you create a new instance of the Rectangle class?
+
+const createRectangle = class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+}
+new createRectangle(1,2)
