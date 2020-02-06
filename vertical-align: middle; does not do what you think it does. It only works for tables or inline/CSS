@@ -12,3 +12,17 @@ work on positioned block
 
 Center in CSS: 
 https://css-tricks.com/centering-css-complete-guide/ 
+
+>Horizontal center:
+  text-align: center; works for inline, inline-block, inline-table, inline-flex
+   margin: 0 auto;: works for block
+>vertical center: 
+  height: 100px;&&line-height: 100px; works for center text in block.
+  vertical-align: middle;
+  display: flex; &&justify-content: center; &&flex-direction: column;
+>vertical center and horizontal center:
+ display: flex;&&justify-content: center;&&align-items: center;
+  margin: auto;
+  
+  
+  
