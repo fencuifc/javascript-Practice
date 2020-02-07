@@ -17,3 +17,55 @@ Put Stylesheet References at the Top. ...
 Put Script References at the Bottom. ...
 Place JavaScript and CSS in External Files. ...
 Minimize HTTP Requests.
+
+
+
+
+Algorith:
+1.Coding，可以自己选语言，就考了一道题：有一个只包含0，1的2d array，0围成的区域代表长方形，求array中这些长方形的左上角坐标和长款。地里有这道题
+2.第一道 利口的溜久只不过加了 ArrayList 的变形 得先处理一波 String
+第二题 烂橘子 不多说了 网上全有
+
+3. ---flatten array, follow up是怎么用非递归完成，我答的是用 Array.prototype.splice，具体可以直接Google
+	 给你两个object然后要根据第二个排除第一个，具体看glassdoor或者地里
+ ----emitter
+---在两个不用的dom树里面找相同的node 具体看glassdoor有题目源代码
+
+4. 第一个题目是LT 原题 Subdomain Visit Count
+
+第二个题目是在比较两个 Array，找到最长的联通元素集。array 里面每个子字符串是 unique 不重复
+
+Arr1 = ['/abc', '/bcd','/dfg','a']
+
+Arr2 = ['/cdf', '/abc', '/bcd','/dfg','cvb', 'a']
+例如这两个array，最长的联通元素集就是['/abc', '/bcd','/dfg']
+
+5.
+第二题： JS经典闭包求乘法
+第二题： JS写字符串的题（很简单）
+
+***************
+UI proj:
+有正反两面，点一下可以switch。然后每个card有next 和 prev两个按钮，点一下可以看上/下一张。可以用React/Vanilla， 但感觉他更想要React解法。
+Follow up，如果有很多cards怎么load，答pagination。
+
+第一题： TS + angular 做一个 日元和美元转换的app。考点是data flow 怎么传（LZ没有学过angular妥妥跪了）
+
+
+6.
+2019 Spotify 电面，
+Given 2 strings, s1 and s2, check if s2 has enough characters to cover s1. E.g:
+s1="miss lee", s2="this is a problem in the code" => expected output: true
+s1="miss lee", s2="this is a problem" => expected output: false, because s1 has 2 'e's but s2 has only 1 'e',
+
+*************
+UI questions:
+1.如何批量移除所有setInterval
+var pageTimer = {} ; //定义计算器全局变量
+//赋值模拟
+pageTimer["timer1"] = setInterval(function(){},2000);
+pageTimer["timer2"] = setInterval(function(){},2000);
+//全部清除方法
+for(var each in pageTimer){
+    clearInterval(pageTimer[each]);
+}
