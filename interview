@@ -1,0 +1,8 @@
+
+1.给一个string array，写一个function能remove其中一个element：比如['cat', 'dog', 'tiger'], remove('dog')就变成了['cat', tiger']
+function remove(arry, elem){
+  var i = arry.indexOf(elem);
+  arry.splice(i,1);
+}
+var arry = ['cat', 'dog', 'pig'];
+remove(arry, 'dog');
