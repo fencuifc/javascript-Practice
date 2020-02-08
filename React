@@ -1,0 +1,75 @@
+https://github.com/markerikson/react-redux-links/blob/master/react-architecture.md
+
+
+Redux:
+Const TODOLIST = ‘TODOLIST’;
+Const todolist = () =>{
+	type:’TODOLIST’,
+	name
+}
+todoReducer = (state=init, action)=>{
+	Switch(action.type){
+	Case TODOLIST: return [...state,name]
+	Default:state
+}
+}
+
+Const store=createStore(‘todoReducer’);
+store.dispatch(todolist(‘list1’));
+console.log(store.getState());
+
+
+JSX
+Components
+one direction flow
+
+
+
+
+*parent child exchange information
+parent->child: props
+child->parent: render props
+
+
+*PROPS -->HTML attr
+STATE-->setState is asyn, invoke rerender
+
+
+
+
+
+*LIFE CIRCLE
+Three general classifications:
+1.initialization
+2.state/property update
+3.destruction
+
+
+componentWillMont
+render
+componentDidMount--> ajax call
+
+shouldComponentUpdate()
+componentWillupdate()
+render()
+componentDidupdate()
+
+componentWillUnmount()
+
+*React Rounter
+
+
+MVC VS FLUX
+MVC:hard to know where precisely that change happened
+Flux:action despatcher chain.
+
+virtual Dom check change,
+
+FLUX:architectural pattern,
+unidirectional data flow
+Action->Dispatcher->Store->View
+
+
+
+
+React question:https://github.com/Pau1fitz/react-interview
