@@ -1,0 +1,172 @@
+
+
+1.	先问了一题算法，context就是每个歌手有各种track，让你找最popular的k个歌手。 其实就是top k largest number
+	（1. 排序；2. 堆；3. 快速选择）
+	https://leetcode.com/problems/kth-largest-element-in-an-array/
+const findKthLargest = (nums, k) => {
+    return quickSelect(nums, 0, nums.length - 1, k);
+};
+
+const quickSelect = (nums, lo, hi, k) => {
+    // use quick sort's idea
+    // put nums that are <= pivot to the left
+    // put nums that are  > pivot to the right
+    for (var i = lo, j = lo; j < hi; j++) {
+        if (nums[j] <= nums[hi]) {
+            i++;
+        }
+    }
+    swap(nums, i, j);
+    
+    // count the nums that are >= pivot
+    const m = hi - i + 1;
+    // pivot is the one!
+    if (m === k) return nums[i];
+    // pivot is too small, so it must be on the right
+    if (m > k) return quickSelect(nums, i + 1, hi, k);
+    // pivot is too big, so it must be on the left
+    return quickSelect(nums, lo, i - 1, k - m);
+};
+function swap(arr, i, j) {
+    const tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+}
+var nums=[3,2,3,1,2,4,5,5,6];
+console.log(findKthLargest(nums,4))
+
+
+http://www.crazyforcode.com/kth-largest-smallest-element-array/ 
+2.	Given 2 strings, s1 and s2, check if s2 has enough characters to cover s1. (数量，特殊符号，Space或者大小写都要考虑)
+	E.g:
+	s1="miss lee", s2="this is a problem in the code" => expected output: true
+	s1="miss lee", s2="this is a problem" => expected output: false, because s1 has 2 'e's but s2 has only 1 'e',
+
+
+function check(s1, s2) {
+	var s2Arry = s2.trim().split(''), s1Arry = s1.trim().replace(/\s+/g, '').split('');
+  var missingItem = 0;
+	s1Arry.forEach(function(s1value){
+		s2Arry.some(function sameV(valueS2){return s1value==valueS2;})
+	});
+  return missingItem<=0;
+  
+  
+}
+
+function check(s1, s2) {
+	var s2Arry = s2.trim().split(''), s1Arry = s1.trim().replace(/\s+/g, '').split('');
+  var missingItem = 0;
+	s1Arry.forEach(function(value){
+		var temproryIndex = s2Arry.indexOf(value);
+		if(temproryIndex<=0){
+      		missingItem = missingItem +1;
+		}else{
+			s2Arry.splice(temproryIndex,1);
+		}
+	});
+  return missingItem<=0;
+}
+
+var s1="miss lee";
+var s2="this is a problem";
+var checkResult = check(s1,s2);
+console.log(checkResult);
+
+
+
+s1Arry.forEach(function(value,key){
+	if(objS1[value]){
+		objS1[value]=objS1[value]+1;
+	}else{
+		objS1[value] = 1;
+	}
+});
+console.log(objS1);
+
+s2Arry.forEach(function(value,key)){
+	if(s1Arry[value]>0){
+		s1Arry[value]--;
+	}
+}
+return s1Arry.length;
+
+3. Sliding window median https://leetcode.com/problems/sliding-window-median/
+
+4.假设输入的数组是1, 2, 98, 99, 99，target要求是100，要求的输出是
+-> [2,98] [1,99] [1,99]
+
+5.
+leetcode 153: Find Minimum in Rotated Sorted Array
+
+
+
+6.toSum复杂度
+
+7. 关于 Binary Tree 的简单题，上周面的忘了原题了，只记得是和求高度难度相当的简单题
+8.数组里第一个非重复数字，hashmap 就够了
+https://leetcode.com/problems/first-unique-character-in-a-string/
+https://leetcode.com/discuss/interview-question/288448/amazon-phone-interview-first-unique-integer
+
+
+
+9.给我一堆 key value pair 的log input，key是user name，value是具体的log，然后给定一个user name，让我找到最frequent的pattern，主要是考用什么样的数据结构来存储这些log，然后再用map reduce来hash每个log string，最后aggregate结果得出最常见的pattern，这道题明显比第一道要难
+
+
+10.给出 string “abc”, 输出所有大小写combination, "Abc" "abc" "aBc" 等总共8个
+递归写完了，问如何优化，大概说了下 用二进制 000, 001, 010 .... 这样搞，然后问有啥限制，答曰只能搞31位， 
+
+11.An anagram is a play on words created by rearranging the letters of the original word to make a new word or phras
+
+给一个doc和一个target，返回boolean是否可以makeTarget。这里doc和target都可以视作是字符串，和那些anagram的题一个套路，也是几行code就够了。
+复杂度分析，怎样优化。比如doc相对target很大啊，doc经常变，询问很频繁，应该怎么优化之类的。
+
+
+12. 普通 grid，给一个 list 的 points，mark 整个 grid 其他点到最近的 input points 的最近距离
+        BFS，把 input list of points 全部放进 queue 里一起 bfs，mark 每个 cell 的最近距离
+
+13	岛屿问题，不过是求最大岛屿面积，一样思路；
+
+14. 白版 一个matrix根据来判pattern,也挺简单的；
+
+********
+Design:
+
+design，Twitter feeds (similar to timeline)
+要你选一个最喜欢的网站，看自己要怎么选技术，怎么搭建。
+
+
+给一个playlist，生成一个random list返回。这题本质上就是N个数字随机取K个，不要求reservior sampling，几行code就够了
+复杂度分析，怎样优化。
+
+
+让我设计一个只提供图片服务，相当于一个CDN吧,表明了latency, throughput 要达到多少
+
+
+2. Spotify playlist class，实现 addTracks(int start, List<Track> toAdd), removeTracks(int start, int end), moveTracks(int start, int end, int insertPos)
+        OOD，一开始想要优化时间复杂度，想出了 hashmap + 自己的 doubly linked list，但是想优化 moveTracks 的情况卡壳了。后来面试官说 I don't mind if you use Java's linked list。。。好吧没想到这么简单
+3. Design: Spotify Ads system, GET API for the client app to get an ad for the user Id; consider the region restriction for some case (check source IP); how to collect impression & click events
+        DB 用 sql 可做，加一点 cache 优化；DB 可用单独的 columns 保存相应的 restriction（可从 region 扩展到任何 restriction）
+
+
+
+********
+Javscript:
+
+2.javascript小题，主要考察throw error， closure之类的
+3. setTimeout，react的问题，
+
+
+
+假设输入是一堆log文件，每个entry里有user, soundtrack, timestamp，代表在某个时间某个user放了什么歌，求播放频率最高的连续三首歌序列。Hashmap count法，只不过key是连续三首歌的歌名拼起来。
+
+
+
+
+
+
+
+
+
+
+
