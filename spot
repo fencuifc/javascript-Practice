@@ -92,13 +92,36 @@ s2Arry.forEach(function(value,key)){
 return s1Arry.length;
 
 3. Sliding window median https://leetcode.com/problems/sliding-window-median/
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var medianSlidingWindow = function(nums, k) {
+    var result=[]; 
+    for(i=0;i<=nums.length-k;i++){
+        var tempArry = nums.slice(i,i+k);
+        tempArry.sort(function(a, b) {
+            return a - b;
+        });
+        console.log(tempArry);
+        var medium;
+        var mediumIndex = Math.round(k/2)-1;
+        if(k%2==0){
+            medium = (tempArry[mediumIndex]+tempArry[mediumIndex+1])/2;
+            result.push(medium);
+        }else{
+           result.push(tempArry[mediumIndex]);
+        }
+        
+    }
+    return result;
+};
 
 4.假设输入的数组是1, 2, 98, 99, 99，target要求是100，要求的输出是
 -> [2,98] [1,99] [1,99]
 
-5.
-leetcode 153: Find Minimum in Rotated Sorted Array
-
+5.leetcode 153: Find Minimum in Rotated Sorted Array
 
 
 6.toSum复杂度
@@ -113,8 +136,9 @@ https://leetcode.com/discuss/interview-question/288448/amazon-phone-interview-fi
 9.给我一堆 key value pair 的log input，key是user name，value是具体的log，然后给定一个user name，让我找到最frequent的pattern，主要是考用什么样的数据结构来存储这些log，然后再用map reduce来hash每个log string，最后aggregate结果得出最常见的pattern，这道题明显比第一道要难
 
 
-10.给出 string “abc”, 输出所有大小写combination, "Abc" "abc" "aBc" 等总共8个
-递归写完了，问如何优化，大概说了下 用二进制 000, 001, 010 .... 这样搞，然后问有啥限制，答曰只能搞31位， 
+10.给出 string “abc”, 输出所有大小写combination, "Abc" "abc" "aBc" 等总共8个---递归
+https://blog.csdn.net/aa5305123/article/details/82962446?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task 
+
 
 11.An anagram is a play on words created by rearranging the letters of the original word to make a new word or phras
 
@@ -129,6 +153,8 @@ https://leetcode.com/discuss/interview-question/288448/amazon-phone-interview-fi
 
 14. 白版 一个matrix根据来判pattern,也挺简单的；
 
+15. 假设输入是一堆log文件，每个entry里有user, soundtrack, timestamp，代表在某个时间某个user放了什么歌，求播放频率最高的连续三首歌序列。Hashmap count法，只不过key是连续三首歌的歌名拼起来。
+https://leetcode.com/discuss/interview-question/algorithms/125297/find-the-most-popular-sequence-of-3-consecutive-visited-pages
 ********
 Design:
 
@@ -158,7 +184,6 @@ Javscript:
 
 
 
-假设输入是一堆log文件，每个entry里有user, soundtrack, timestamp，代表在某个时间某个user放了什么歌，求播放频率最高的连续三首歌序列。Hashmap count法，只不过key是连续三首歌的歌名拼起来。
 
 
 
