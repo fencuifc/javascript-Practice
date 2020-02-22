@@ -122,7 +122,21 @@ var medianSlidingWindow = function(nums, k) {
 -> [2,98] [1,99] [1,99]
 
 5.leetcode 153: Find Minimum in Rotated Sorted Array
-
+var findMin = function(nums) {
+    var low = 0;
+    var high = nums.length-1;
+    var medium;
+    while(low < high){
+        //console.log(low + '  ' + high);
+        medium = Math.floor((high+low)/2);
+        if(nums[medium]<nums[high]){
+            high = medium;
+        }else{
+            low = medium + 1;
+        }
+    }
+    return nums[low];
+};
 
 6.toSum复杂度
 
