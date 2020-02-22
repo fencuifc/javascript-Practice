@@ -141,6 +141,13 @@ var findMin = function(nums) {
 6.toSum复杂度
 
 7. 关于 Binary Tree 的简单题，上周面的忘了原题了，只记得是和求高度难度相当的简单题
+https://leetcode.com/problems/maximum-depth-of-binary-tree/
+var maxDepth = function(root) {
+    if(root === null) return 0;
+    var l = maxDepth(root.left);
+    var r = maxDepth(root.right);
+    return Math.max(l, r) + 1;
+};
 8.数组里第一个非重复数字，hashmap 就够了
 https://leetcode.com/problems/first-unique-character-in-a-string/
 https://leetcode.com/discuss/interview-question/288448/amazon-phone-interview-first-unique-integer
