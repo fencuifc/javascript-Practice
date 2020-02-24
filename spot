@@ -171,7 +171,26 @@ https://blog.csdn.net/aa5305123/article/details/82962446?depth_1-utm_source=dist
         BFS，把 input list of points 全部放进 queue 里一起 bfs，mark 每个 cell 的最近距离
 
 13	岛屿问题，不过是求最大岛屿面积，一样思路；
-
+var maxAreaOfIsland = function(grid) {
+    var n = grid.length;  if(n==0) return 0;
+    var m = grid[0].length, count = 0,
+dsf = function(i, j){
+        var step = 1;
+        if(i>n-1 || j>m-1 || i<0 || j<0 || grid[i][j] == 0) return 0;  
+        grid[i][j] = 0;
+        step += dsf(i+1,j);
+        step += dsf(i-1, j);
+        step += dsf(i, j+1);
+        step += dsf(i, j-1);
+        return step;
+    };
+    for(i=0;i<=n-1;i++){
+        for(j=0;j<=m-1;j++){
+            grid[i][j] == 1 && (count = Math.max(dsf(i, j), count));
+        }
+    }
+    return count;
+};
 14. 白版 一个matrix根据来判pattern,也挺简单的；
 
 15. 假设输入是一堆log文件，每个entry里有user, soundtrack, timestamp，代表在某个时间某个user放了什么歌，求播放频率最高的连续三首歌序列。Hashmap count法，只不过key是连续三首歌的歌名拼起来。
