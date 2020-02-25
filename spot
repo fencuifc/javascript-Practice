@@ -120,7 +120,22 @@ var medianSlidingWindow = function(nums, k) {
 
 4.假设输入的数组是1, 2, 98, 99, 99，target要求是100，要求的输出是
 -> [2,98] [1,99] [1,99]
+var find = function(arry, target) {
+    var right =[], result = [], i=0, j=arry.length-1, medium=Math.floor(arry[j]/2);
+	for(i=0;arry[i]<medium;i++){
+		right[i] = target - arry[i];
+		while(arry[j]>=right[i] && j>=0){
+			if(arry[j]==right[i]){
+				result.push([arry[i],arry[j]]);
+			}
+			j--;
+		}
+	}
+    return result;
+};
 
+var arry=[1, 2, 98, 99, 99];
+console.log(find(arry,100));
 5.leetcode 153: Find Minimum in Rotated Sorted Array
 var findMin = function(nums) {
     var low = 0;
@@ -151,7 +166,31 @@ var maxDepth = function(root) {
 8.数组里第一个非重复数字，hashmap 就够了
 https://leetcode.com/problems/first-unique-character-in-a-string/
 https://leetcode.com/discuss/interview-question/288448/amazon-phone-interview-first-unique-integer
-
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var firstUniqChar = function(s) {
+    //get sArry
+    var sArry = s.split(''),
+        obj = {};
+    //edge case
+    if(sArry.length == 0) return -1;
+    //obj obj={'l':2,'o':2,v:'1'},result=-1;
+    for(i=0; i<sArry.length; i++) {
+        if(obj[sArry[i]]){
+            obj[sArry[i]]++;
+        }else{
+            obj[sArry[i]]=1;
+        }
+    }
+ for(i=0; i<sArry.length; i++) {
+     if(obj[sArry[i]] == 1){
+         return i;
+     }
+ }
+    return -1;
+};
 
 
 9.给我一堆 key value pair 的log input，key是user name，value是具体的log，然后给定一个user name，让我找到最frequent的pattern，主要是考用什么样的数据结构来存储这些log，然后再用map reduce来hash每个log string，最后aggregate结果得出最常见的pattern，这道题明显比第一道要难
