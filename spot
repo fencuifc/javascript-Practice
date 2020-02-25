@@ -165,7 +165,42 @@ https://blog.csdn.net/aa5305123/article/details/82962446?depth_1-utm_source=dist
 
 给一个doc和一个target，返回boolean是否可以makeTarget。这里doc和target都可以视作是字符串，和那些anagram的题一个套路，也是几行code就够了。
 复杂度分析，怎样优化。比如doc相对target很大啊，doc经常变，询问很频繁，应该怎么优化之类的。
+var findAnagrams = function(s, p) {
+      //find p character map
+    var tableP = {};
+    var result=[];
+    p.split('').forEach(function(value){
+    	if(tableP[value]){
+    		tableP[value]++;
+    	}else{
+    		tableP[value] = 1;
+    	}
+    });
+    //find counter
+    var count = p.length;
+    var i = j = 0;
+    //edge case 
+    if(p.length > s.length) return [];
+    //find characters
+    while(j < s.length) {
+    	if(tableP[s[j]]>=0){
+    		tableP[s[j]]=tableP[s[j]]-1;
+            //console.log(s[j]);
+    		tableP[s[j]]==0 && count--;
+    	}
+    	j++;
 
+        while(count==0){
+    		if(j-i == p.length){result.push(i);}
+    		if(tableP[s[i]]==0){
+    			tableP[s[i]] = tableP[s[i]]+1;
+    			tableP[s[i]]> 0 && count++;
+    		}
+    		i++;
+    	}
+    }
+    return result;
+};
 
 12. 普通 grid，给一个 list 的 points，mark 整个 grid 其他点到最近的 input points 的最近距离
         BFS，把 input list of points 全部放进 queue 里一起 bfs，mark 每个 cell 的最近距离
