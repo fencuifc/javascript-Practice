@@ -1,0 +1,32 @@
+/**
+ * quick sort
+ */
+var quickSort = function(arry, start, end){
+	if(start>=end) return;
+
+	var left = start, right = end;
+	var medium = Math.floor((start + end)/2);
+	var pivot = arry[medium];
+
+	while(left <= right){
+		while(left <= right && arry[left] < pivot){
+			left++;
+		}
+		while(left <= right && arry[right] > pivot){
+			right--;
+		}
+		if(left <= right){
+			var temp = arry[left];
+			arry[left] = arry[right];
+			arry[right] = temp;
+			left++;
+			right--;
+		}
+	}
+	quickSort(arry, start, right);
+	quickSort(arry, left, end);
+}
+
+var arry = [3,2,1,5,6,4];
+
+quickSort(arry,0,arry.length-1);
