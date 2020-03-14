@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    var result=[];
+    if(nums==null) return result;
+    nums.sort();
+    
+    var helper = function(subset, currentIndex){
+        //return point
+       // if(subset.length >= nums.length) return;
+        result.push(subset.concat());//deep copy
+        for(var i=currentIndex;i<nums.length;i++){
+            subset.push(nums[i]);//subsets of subset
+            helper(subset, i+1);//remove duplicate
+            subset.pop();//back track
+        }
+    };
+    //initial entry point
+    helper([], 0);
+    
+    return result;
+};
