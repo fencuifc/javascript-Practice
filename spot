@@ -211,12 +211,32 @@ var firstUniqChar = function(s) {
 
 10.给出 string “abc”, 输出所有大小写combination, "Abc" "abc" "aBc" 等总共8个---递归
 https://blog.csdn.net/aa5305123/article/details/82962446?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task 
-
+var  letterCasePermutation  = function(s){
+ 	var result = [];
+ 	var isCharacter = function(c){
+ 		return c.match(/^[a-zA-Z]+$/);
+ 	};
+ 	var dfs = function(tempStr, position){
+ 		if(position == s.length()){
+ 			result.add(tempStr);
+ 			return;
+ 		}
+ 		var c = s.charAt(position);
+ 		if(isCharacter(c)){
+ 			dfs(tempStr + c, position+1);
+ 		}else{
+ 			dfs(tempStr+ c.toLowerCase(), position+1);
+ 			dfs(tempStr+ c.toUpperCase(), position+1);
+ 		}
+ 	};
+ 	dfs('', 0);
+ 	return result;
+ };
 
 11.An anagram is a play on words created by rearranging the letters of the original word to make a new word or phras
-
 给一个doc和一个target，返回boolean是否可以makeTarget。这里doc和target都可以视作是字符串，和那些anagram的题一个套路，也是几行code就够了。
 复杂度分析，怎样优化。比如doc相对target很大啊，doc经常变，询问很频繁，应该怎么优化之类的。
+
 var findAnagrams = function(s, p) {
       //find p character map
     var tableP = {};
