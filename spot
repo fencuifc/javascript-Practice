@@ -154,7 +154,20 @@ var findMin = function(nums) {
 };
 
 6.toSum复杂度
-
+var twoSum = function(nums, target) {
+    if(!nums || nums.length == 0) return [];
+    var hashmap = {};
+    for(var i=0;i<nums.length;i++){
+        hashmap[nums[i]] = i;
+    }
+    for(var i =0;i<nums.length;i++){
+        var tmp = target - nums[i];
+        if(hashmap[tmp] && hashmap[tmp] != i){
+            var j = hashmap[tmp];
+            return [i,j];
+        }
+    }
+};
 7. 关于 Binary Tree 的简单题，上周面的忘了原题了，只记得是和求高度难度相当的简单题
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
 var maxDepth = function(root) {
