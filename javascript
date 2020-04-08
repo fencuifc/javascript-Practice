@@ -103,3 +103,19 @@ const c3 = c2.subtract(12);//-2
 console.log(c3);
 const c4 = c3.negate();//2
 
+prototype:
+function user(name){
+	this.name =  name;
+}
+user.prototype.login = function(){
+	console.log("login" + this.name);
+}
+function admin(name){
+	user.apply(this,[name]);
+	console.log("admin"+this.name);
+}
+admin.prototype = Object.create(user.prototype);
+var f = new user('fen');
+f.login();
+var a = new admin('c');
+a.login();
