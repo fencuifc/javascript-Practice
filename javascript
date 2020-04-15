@@ -2,6 +2,16 @@
 "This"
 This is refer to caller. if no caller, this will point to window object.
 bind,call,apply
+let obj = {num:2};
+let addTothis = function(a){
+	return this.num+a
+};
+addTothis.call(obj,3);
+addTothis.apply(obj,[3]);
+let bound = addTothis.bind(obj);
+bound(1);//3
+
+addTothis function was called for object obj
 ES5:
 var sum = {
 	num1:1,
