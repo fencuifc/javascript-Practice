@@ -55,6 +55,19 @@ var sum = {
 
 primitive immutable (string, number) wrapper object,these objects have methods and properties 
 
+check if it is array, typeOf array == 'object'
+function isArray(obj){
+    return Object.prototype.toString.call( obj ) === '[object Array]';
+}
+function isArray(obj){
+    return obj.__proto__ === Array.prototype;
+}
+[1,2,3] instanceof Array
+delete
+var a = {b:1}
+delete a.b
+//a = {}
+
 
 chain function
 const sumTwo= (number1,number2)=>{
