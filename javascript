@@ -10,6 +10,7 @@ addTothis.call(obj,3);
 addTothis.apply(obj,[3]);
 let bound = addTothis.bind(obj);
 bound(1);//3
+Array.prototype.slice.call(fakeArray)
 
 addTothis function was called for object obj
 ES5:
@@ -51,6 +52,9 @@ var sum = {
 "Closure" variable and methods private in the scope. 'function in function'
 "high order function":a function accepts or returns another function
 "declaration fuction"->"expression function": defined in different periods. declaration @parsing time, expression @run time
+
+primitive immutable (string, number) wrapper object,these objects have methods and properties 
+
 
 chain function
 const sumTwo= (number1,number2)=>{
