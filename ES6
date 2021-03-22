@@ -24,3 +24,11 @@ const createRectangle = class Rectangle {
   }
 }
 new createRectangle(1,2)
+
+//reducer 
+const runningSum = nums => {
+   return result =  nums.reduce((sum, elem, index) => {
+        sum[index] = index === 0 ? elem: sum[index-1] + elem;
+        return sum;
+    }, []);
+};
